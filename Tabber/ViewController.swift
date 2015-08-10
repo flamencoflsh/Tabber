@@ -30,14 +30,14 @@ class ViewController: UIViewController {
     @IBOutlet weak var darkArea: UIView!
     @IBOutlet weak var maxReachedLabel: UILabel!
     
-   // override func viewWillAppear(animated: Bool) {
-   //     navigationItem.title = "Tabber"
-   // }
+    // override func viewWillAppear(animated: Bool) {
+    //     navigationItem.title = "Tabber"
+    // }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-                
+        
         tipLabel.text = "$0.00"
         totalLabel.text = "$0.00"
         total2Label.text = "$0.00"
@@ -53,7 +53,7 @@ class ViewController: UIViewController {
         billField.becomeFirstResponder()
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -65,22 +65,22 @@ class ViewController: UIViewController {
         
         if(billField.text?.characters.count > 0)
         {
-        
-        let a: Character = "$"
-        let b: Character = (billField.text?.characters.first)!
-    
-        if(a == b){
-           billField.text!.removeAtIndex(billField.text!.startIndex)
-           if (self.darkArea.alpha == 0){
-                self.billField.center.y = self.billField.center.y - 70
+            
+            let a: Character = "$"
+            let b: Character = (billField.text?.characters.first)!
+            
+            if(a == b){
+                billField.text!.removeAtIndex(billField.text!.startIndex)
+                if (self.darkArea.alpha == 0){
+                    self.billField.center.y = self.billField.center.y - 70
+                }
             }
-        }
-        
-        UIView.animateWithDuration(0.4, animations:{
-            self.darkArea.alpha = 1
-            self.tipControl.hidden = false
-        })
-
+            
+            UIView.animateWithDuration(0.4, animations:{
+                self.darkArea.alpha = 1
+                self.tipControl.hidden = false
+            })
+            
         }else {
             UIView.animateWithDuration(0.4, animations:{
                 if (self.darkArea.alpha == 1){
@@ -100,7 +100,7 @@ class ViewController: UIViewController {
         var billAmount = NSString(string: billField.text!).doubleValue
         //var billAmount = billField.text.bridgeToObjectiveC().doubleValue
         
-        //Set max limit: = total + tip = $9999.99 at 22% tip
+        //Set max limit: = total + tip = $999999.99 at 22% tip
         if (billAmount > 819672.12){
             billAmount = 819672.12
             maxReachedLabel.hidden = false
@@ -121,9 +121,8 @@ class ViewController: UIViewController {
         total3Label.text = String(format: "$%.2f", total/3)
         total4Label.text = String(format: "$%.2f", total/4)
     }
-
+    
     @IBAction func onTap(sender: AnyObject) {
         view.endEditing(true)
     }
 }
-
